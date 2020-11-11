@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js playground</title>
+</head>
+<style>
+    canvas {
+        width: 300px;height: 200px;
+        border: 1px solid #333;
+    }
+    #btn{
+position: fixed;
+top: 50px;
+right :50px;
+    }
+</style>
+<body>
+    
+  <div id="mon-app" >
+    <h1>vue js cours</h1>
+    <button v-on:click="augmente">augmente</button>
+    <button v-on:click="diminue">diminue</button>
+    <h2>compteur : {{compteur}}</h2>
+    <canvas v-on:mousemove="coords"></canvas>
+    <p>{{ x }} / {{ y }}</p>
+<div v-on :click="foo">
+    <p>lorem ipsum
+
+        <button id="btn" v-on:click.stop="foo">clique moi(v-on click)</button>
+  
+    </p>
+</div>
+
+
+
+  </div>
+  <form v-on:submit.prevent="onSubmit">
+    <button>valider</button>
+</form>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+       new Vue({
+             el: '#mon-app',
+             data: {
+                 compteur:0,
+                 x:0,
+                 y:0
+            },
+             methods :{
+                 foo:function(){
+                     console.log("clique");
+                 },
+                 augmente :function(){
+                     this.compteur++;},
+                 diminue :function(){
+                     this.compteur--;
+                 } ,
+                 coords: function(e){
+                
+                    this.x=e.offsetX;
+                    this.y=e.offsetY;
+                 } 
+                                 
+                 }
+             
+       })
+
+
+    </script>
+</body>
+</html>
